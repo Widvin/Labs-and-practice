@@ -1,0 +1,80 @@
+public class Runner {
+    public static void main(String[] args) {
+
+
+        Employer[] slaves = new Employer[7];
+
+        slaves[0] = new Employer("Name1", 15, 5);
+        slaves[1] = new Employer("Name2", 19, 8);
+        slaves[2] = new Employer("Name4", 10, 6);
+        slaves[3] = new Employer("Name4", 20, 7);
+        slaves[4] = new Employer("Name5", 22, 8);
+        slaves[5] = new Employer("Name6", 30, 4);
+        slaves[6] = new Employer();
+
+
+        for (Employer employer : slaves) {
+            if (employer != null) {
+                employer.show();
+            }
+        }
+
+
+        slaves[slaves.length-1].set_expenses(53);
+
+
+        for (int emp_id = 0; emp_id < slaves.length; emp_id++) {
+            int sum_of_durations = 0;
+            if (slaves[emp_id] != null){
+                sumofdurations = slaves[worker_id].get_NumberOfDays();
+            } else {
+                continue;
+            }
+            for (int emp_2_id = 0; emp_2_id < slaves.length; emp_2_id++) {
+                if (emp_id != emp_2_id && slaves[emp_2_id] != null
+                        && slaves[emp_id].get_account().equals(slaves[emp_2_id].get_account())){
+
+                    sumofdurations += slaves[emp_2_id].get_NumberOfDays();
+                }
+            }
+            System.out.println("Работник "+slaves[emp_id].get_account()+" был в командировке "+sumofdurations
+                    + "дня(-ей)");
+        }
+
+
+        for (Employer slave : slaves) {
+            if (slave != null) {
+                System.out.println(slave.to_string());
+            }
+        }
+
+
+        int totalexp = 0;
+        for (Employer slave : slaves) {
+            if (slave != null) {
+                totalexp += slave.get_total();
+            }
+        }
+        System.out.println("Итого: " + totalexp);
+
+
+        int empnumber = 0;
+        float emptotal = 0;
+        for (int i = 0; i < slaves.length; i++) {
+            if (slaves[i] != null){
+                slaves[i].show();
+                if (slaves[i] != null) {
+                    float total = slaves[i].get_total();
+                    if (total > emptotal){
+                        empnumber = i;
+                        emptotal = total;
+                    }
+                }
+            }
+            System.out.println("Самый большой счёт: " + emptotal + "р. Предоставлен " +
+                    slaves[empnumber].get_account());
+
+
+
+        }
+    }
